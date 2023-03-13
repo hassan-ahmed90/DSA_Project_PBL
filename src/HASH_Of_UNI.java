@@ -1,5 +1,3 @@
-import java.lang.Object;
-import java.util.HashMap;
 public class HASH_Of_UNI {
 
     private int size;
@@ -9,7 +7,7 @@ public class HASH_Of_UNI {
         list=new Node[cap];
     }
     private class Node{
-        PAK_UNIVERSITIES value;
+        String value;
         String key;
         Node next;
 
@@ -35,6 +33,21 @@ private int hash(int key){
     void push(String value,int key){
     int index=hash(key);
     Node a= list[index];
+    while (a!=null){
+    if(a.key.equals(key))break;
+    a=a.next;
+    }
+    if(a!=null){
+        a.value=value;
+        return;
+    }
+ if(size>=0.75*list.length)refresh_Size();
+ Node head=new Node();
+ head.value=value;
+ head.key=key;
+ head.next=list[index];
+ size++;
+
     }
 
 
