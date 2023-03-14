@@ -5,14 +5,14 @@ public class HASH_Of_UNI {
     HASH_Of_UNI(int cap){
         list=new Node[cap];
     }
-    private class Node{
-        String value;
+    private static class Node{
+        PAK_UNIVERSITIES value;
         String key;
         Node next;
 
     }
 
-private int hash(int key){
+private int hash(String key){
     return Math.abs(key.hashCode())% list.length;
 }
     void refresh_Size(){
@@ -28,7 +28,7 @@ private int hash(int key){
             }
         }
     }
-    void addData(String value,int key){
+    void addData(String key, PAK_UNIVERSITIES value){
     int index=hash(key);
     Node a= list[index];
     while (a!=null){
@@ -44,10 +44,11 @@ private int hash(int key){
      head.value=value;
      head.key=key;
      head.next=list[index];
+     list[index]=head;
      size++;
     }
 
-    public String get(String key){
+    public PAK_UNIVERSITIES get(String key){
         int index=hash(key);
         Node head=list[index];
         while (head!=null){
@@ -56,7 +57,7 @@ private int hash(int key){
         }
         return null;
     }
-    public String delete(String  key){
+    public PAK_UNIVERSITIES delete(String  key){
         int index=hash(key);
         Node head=list[index];
         if(head==null)return null;

@@ -40,31 +40,37 @@ public class StachUni {
         size++;
 
     }
+    public String get(int position){
+        if(position<1||position>size)throw new IllegalArgumentException("Incorrect index");
+        Node temp=top;
+        for(int j=1;j<position;j++)temp=temp.next;
+        return temp.data;
+    }
 
     public void push(String key,PAK_UNIVERSITIES university,String orderBy){
         Node temp=top;
         if(orderBy.equals("noOfPublications")){
-            if(isKhali()||Main.getMap().get(top.data).getNoOfPublications()< university.getNo_Of_Publication()){
+            if(isKhali()||Main.getMap().get(top.data).getNo_Of_Publication()< university.getNo_Of_Publication()){
                 top=new Node(key,top);
                 size++;
                 return;
             }
 
             while (temp.next!=null){
-                if(Main.getMap().get(temp.next.data).getNoOfPublications()< university.getNo_Of_Publication())break;
+                if(Main.getMap().get(temp.next.data).getNo_Of_Publication()< university.getNo_Of_Publication())break;
                 temp=temp.next;
             }
 
         }
         else if(orderBy.equals("PakRanking")){
-            if(isKhali()||Main.getMap().get(top.data).getPakRanking()> university.getPak_Rank()){
+            if(isKhali()||Main.getMap().get(top.data).getPak_Rank()> university.getPak_Rank()){
                 top=new Node(key,top);
                 size++;
                 return;
             }
 
             while (temp.next!=null){
-                if(Main.getMap().get(temp.next.data).getPakRanking()> university.getPak_Rank())break;
+                if(Main.getMap().get(temp.next.data).getPak_Rank()> university.getPak_Rank())break;
                 temp=temp.next;
             }
 
@@ -75,6 +81,10 @@ public class StachUni {
         temp.next=n;
         size++;
 
+    }
+
+    public void traverse(){
+        for(Node n=top;n!=null;n=n.next) System.out.println(Main.getMap().get(n.data));
     }
 
 
