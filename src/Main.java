@@ -1,7 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+//I forget to write the comments here
+//It is the 2nd day i commit without writting code
 public class Main {
 PAK_UNIVERSITIES[] universities= new PAK_UNIVERSITIES[100];
 String []keys = new String[100];
